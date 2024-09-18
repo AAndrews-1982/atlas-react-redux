@@ -29,3 +29,6 @@ In this project you will build a kanban/scrum board similar to trello using redu
 
 ## Project Demo
 Link: https://atlas-react-redux.netlify.app
+
+#### Cloned Repo
+Link: [https://github.com/atlas-jswank/atlas-react-redux](https://github.com/atlas-jswank/atlas-react-redux)
