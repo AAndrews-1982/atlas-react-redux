@@ -17,12 +17,12 @@ const List: React.FC<ListProps> = ({ title, cards, onDelete }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div style={{ height: '30px', position: 'absolute', top: '5px', left: '50%', transform: 'translateX(-50%)', zIndex: 2 }}>
+      <div style={{ position: 'absolute', top: '0', left: '50%', transform: 'translateX(-50%)', zIndex: 2 }}>
         {isHovered && (
           <DeleteListButton onDelete={onDelete} />
         )}
       </div>
-      <h3 className="text-xl font-bold text-white mb-4" style={{ textAlign: 'center', marginTop: '30px' }}>
+      <h3 className="text-lg font-normal text-white mb-4" style={{ textAlign: 'center', marginTop: '30px' }}>
         {title}
       </h3>
       {cards.map((card, index) => (

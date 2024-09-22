@@ -26,7 +26,7 @@ const Board = () => {
             ]
         },
         {
-            title: 'In Progress',
+            title: 'To Do',
             cards: [
                 { title: 'Lorem ipsum dolor', description: 'Sed viverra, diam eu facilisis bibendum, ante orci placerat quam' },
                 { title: 'Lorem ipsum dolor', description: 'Sed viverra, diam eu facilisis bibendum, ante orci placerat quam' },
@@ -34,7 +34,7 @@ const Board = () => {
             ]
         },
         {
-            title: 'Done',
+            title: 'To Do',
             cards: [
                 { title: 'Lorem ipsum dolor', description: 'Sed viverra, diam eu facilisis bibendum, ante orci placerat quam' },
                 { title: 'Lorem ipsum dolor', description: 'Sed viverra, diam eu facilisis bibendum, ante orci placerat quam' },
