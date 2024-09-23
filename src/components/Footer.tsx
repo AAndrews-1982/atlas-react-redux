@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addList, clearBoard } from '../slices/listsSlice'; // Ensure you import the correct actions
 
 const Footer: React.FC = () => {
   const [title, setTitle] = useState('');
+  const dispatch = useDispatch();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Create list: ' + title);
-    setTitle(''); // Clear the input after submission
+    if (title.trim() !== '') {
+      dispatch(addList(title)); // Dispatch addList action from listsSlice
+      setTitle(''); // Clear the input after submission
+    } else {
+      alert('Please enter a title for the list.');
+    }
   };
 
   const handleClearBoard = () => {
-    alert('Clear board');
-    setTitle(''); // Clear the input
+    dispatch(clearBoard()); // Dispatch clearBoard action from listsSlice
   };
 
   return (
