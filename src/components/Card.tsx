@@ -18,7 +18,7 @@ const Card: React.FC<CardProps> = ({ id, title, description }) => {
   };
 
   return (
-    <div className="bg-white p-4 rounded shadow-md mb-2 relative">
+    <div className="bg-off-white-light p-4 rounded shadow-md mb-2 relative text-black">
       <button
         onClick={handleDeleteCard}
         className="absolute top-2 right-2 text-gray-500 hover:text-red-500 transition-colors"

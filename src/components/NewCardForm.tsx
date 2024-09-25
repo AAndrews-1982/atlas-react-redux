@@ -21,23 +21,40 @@ const NewCardForm: React.FC<NewCardFormProps> = ({ listId }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-4">
-      <input
-        type="text"
-        placeholder="Card Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        className="w-full p-2 mb-2 border rounded"
-      />
-      <textarea
-        placeholder="Card Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        className="w-full p-2 mb-2 border rounded"
-      />
-      <button type="submit" className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-        Add Card
-      </button>
+    <form onSubmit={handleSubmit} className="mt-4 bg-blue p-4 rounded shadow-md">
+      <div className="mb-3">
+        <label htmlFor="cardTitle" className="block text-off-white-light text-sm font-bold mb-2">
+          Card Title
+        </label>
+        <input
+          type="text"
+          id="cardTitle"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="w-full p-2 bg-off-white-light text-blue rounded"
+          required
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="cardDescription" className="block text-off-white-light text-sm font-bold mb-2">
+          Card Description
+        </label>
+        <textarea
+          id="cardDescription"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="w-full p-2 bg-off-white-light text-blue rounded"
+          rows={3}
+          required
+        />
+      </div>
+      <div className="text-right">
+        <input 
+          type="submit" 
+          value="Add Card" 
+          className="text-teal font-bold cursor-pointer hover:text-teal/80 transition-colors"
+        />
+      </div>
     </form>
   );
 };

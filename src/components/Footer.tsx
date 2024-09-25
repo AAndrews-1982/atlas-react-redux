@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
       <form onSubmit={handleAddList} className="flex items-center space-x-4">
         <input
           type="text"
-          placeholder="New List Title"
+          placeholder="List Title"
           value={newListTitle}
           onChange={(e) => setNewListTitle(e.target.value)}
           className="border-0 bg-transparent text-3xl font-semibold text-blue placeholder:text-blue placeholder:opacity-50 focus:outline-none"
@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
       </form>
       <button
         onClick={handleClearBoard}
-        className="rounded bg-red-500 px-4 py-2 text-sm font-semibold text-white hover:bg-red-600 transition-colors"
+        className="rounded bg-teal px-4 py-2 text-sm font-semibold text-off-white-light hover:bg-teal/90 transition-colors"
       >
         Clear Board
       </button>

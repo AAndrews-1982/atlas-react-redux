@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import listsReducer from '../slices/listsSlice';
-import cardsReducer from '../slices/cardsSlice'; // Make sure to import this
+import cardsReducer from '../slices/cardsSlice';
 import Header from './Header';
 import Board from './Board';
 import Footer from './Footer';
