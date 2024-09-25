@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addCard } from '../slices/listsSlice'; // Adjust the import path as needed
+import { createCard } from '../slices/cardsSlice';
 
 interface NewCardFormProps {
   listId: string;
@@ -14,7 +14,7 @@ const NewCardForm: React.FC<NewCardFormProps> = ({ listId }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (title.trim() && description.trim()) {
-      dispatch(addCard({ listId, title, description }));
+      dispatch(createCard({ listId, title, description }));
       setTitle('');
       setDescription('');
     }

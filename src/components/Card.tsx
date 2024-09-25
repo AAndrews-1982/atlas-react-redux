@@ -1,14 +1,35 @@
 import React from 'react';
-import DeleteCardButton from './DeleteCardButton';
+import { useDispatch } from 'react-redux';
+import { deleteCard } from '../slices/cardsSlice';
 
-const Card = ({ title, description }) => {
+interface CardProps {
+  id: string;
+  title: string;
+  description: string;
+}
+
+const Card: React.FC<CardProps> = ({ id, title, description }) => {
+  const dispatch = useDispatch();
+
+  const handleDeleteCard = () => {
+    if (window.confirm('Are you sure you want to delete this card?')) {
+      dispatch(deleteCard({ cardId: id }));
+    }
+  };
+
   return (
-    <div className="card group/card m-3 flex min-h-24 w-full flex-col items-start rounded bg-off-white-light px-4 py-2 text-blue">
-      <h5 className="my-2 flex w-full items-end justify-between text-xl font-black">
-        <span>{title}</span>
-        <DeleteCardButton />
-      </h5>
-      <p className="mt-0 text-left">{description}</p>
+    <div className="bg-white p-4 rounded shadow-md mb-2 relative">
+      <button
+        onClick={handleDeleteCard}
+        className="absolute top-2 right-2 text-gray-500 hover:text-red-500 transition-colors"
+        title="Delete Card"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <h4 className="font-bold mb-2">{title}</h4>
+      <p>{description}</p>
     </div>
   );
 };

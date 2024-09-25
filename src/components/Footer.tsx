@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addList, clearBoard } from '../slices/listsSlice'; // Adjust the import path as needed
+import { addList, clearBoard } from '../slices/listsSlice';
+import { clearCards } from '../slices/cardsSlice';
 
 const Footer: React.FC = () => {
   const dispatch = useDispatch();
@@ -15,8 +16,9 @@ const Footer: React.FC = () => {
   };
 
   const handleClearBoard = () => {
-    if (window.confirm('Are you sure you want to clear the entire board?')) {
+    if (window.confirm('Are you sure you want to clear the entire board? This will remove all lists and cards.')) {
       dispatch(clearBoard());
+      dispatch(clearCards());
     }
   };
 
