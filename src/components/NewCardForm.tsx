@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addCard } from '../slices/listsSlice';
 
-const NewCardForm = () => {
+const NewCardForm = ({ listId }) => {
+  const dispatch = useDispatch();
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Create card');
+    if (title.trim() && description.trim()) {
+      dispatch(addCard({ listId, title, description }));
+      setTitle('');
+      setDescription('');
+    }
   };
 
   return (
@@ -17,12 +27,14 @@ const NewCardForm = () => {
           autoFocus
           type="text"
           placeholder="Title"
-          name="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <textarea
           className="w-11/12 resize-none overflow-auto border-0 bg-off-white-light text-blue outline-none"
           placeholder="Description"
-          name="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
         <div className="buttons w-full">
           <button type="submit" className="w-full p-4">Save</button>
