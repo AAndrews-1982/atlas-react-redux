@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addCard } from '../slices/listsSlice';
+import { addCard } from '../slices/listsSlice'; // Adjust the import path as needed
 
-const NewCardForm = ({ listId }) => {
+interface NewCardFormProps {
+  listId: string;
+}
+
+const NewCardForm: React.FC<NewCardFormProps> = ({ listId }) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (title.trim() && description.trim()) {
       dispatch(addCard({ listId, title, description }));
@@ -17,30 +21,24 @@ const NewCardForm = ({ listId }) => {
   };
 
   return (
-    <div className="group/new-card m-3 flex h-44 w-full justify-center">
-      <form
-        onSubmit={handleSubmit}
-        className="hidden min-h-24 w-full flex-col items-start rounded bg-off-white-light px-4 text-blue group-hover/new-card:flex"
-      >
-        <input
-          className="w-11/12 resize-none overflow-auto rounded-t-3xl border-0 bg-off-white-light px-0 py-6 text-xl font-black text-blue outline-none"
-          autoFocus
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <textarea
-          className="w-11/12 resize-none overflow-auto border-0 bg-off-white-light text-blue outline-none"
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <div className="buttons w-full">
-          <button type="submit" className="w-full p-4">Save</button>
-        </div>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className="mt-4">
+      <input
+        type="text"
+        placeholder="Card Title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        className="w-full p-2 mb-2 border rounded"
+      />
+      <textarea
+        placeholder="Card Description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        className="w-full p-2 mb-2 border rounded"
+      />
+      <button type="submit" className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+        Add Card
+      </button>
+    </form>
   );
 };
 

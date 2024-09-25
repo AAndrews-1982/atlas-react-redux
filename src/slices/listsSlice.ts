@@ -9,17 +9,15 @@ interface Card {
 interface List {
   id: string;
   title: string;
-  cardIds: string[];
+  cards: Card[];
 }
 
 interface ListsState {
   lists: List[];
-  cards: { [key: string]: Card };
 }
 
 const initialState: ListsState = {
   lists: [],
-  cards: {},
 };
 
 const listsSlice = createSlice({
@@ -30,7 +28,7 @@ const listsSlice = createSlice({
       const newList: List = {
         id: Date.now().toString(),
         title: action.payload.title,
-        cardIds: [],
+        cards: [],
       };
       state.lists.push(newList);
     },
@@ -39,20 +37,17 @@ const listsSlice = createSlice({
     },
     addCard: (state, action: PayloadAction<{ listId: string; title: string; description: string }>) => {
       const { listId, title, description } = action.payload;
-      const newCard: Card = {
-        id: Date.now().toString(),
-        title,
-        description,
-      };
-      state.cards[newCard.id] = newCard;
       const list = state.lists.find(list => list.id === listId);
       if (list) {
-        list.cardIds.push(newCard.id);
+        list.cards.push({
+          id: Date.now().toString(),
+          title,
+          description,
+        });
       }
     },
     clearBoard: (state) => {
       state.lists = [];
-      state.cards = {};
     },
   },
 });
