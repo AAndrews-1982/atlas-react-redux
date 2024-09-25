@@ -1,55 +1,23 @@
 import React from 'react';
-import List from './List'; // Ensure List component is imported
+import List from './List';
 
 const Board = () => {
-    // Define inline styles for the board with updated colors and layout
-    const boardStyle: React.CSSProperties = {
-        display: 'flex',
-        justifyContent: 'space-evenly', // Adjust for even spacing
-        alignItems: 'flex-start', // Align items at the start of the container
-        padding: '20px',
-        backgroundColor: 'var(--blue)', // Deep blue background color
-        color: '#ffffff', // White text color for consistency
-        width: '100%', // Full width to spread across the screen
-        overflowX: 'auto', // Allows scrolling horizontally if lists exceed screen width
-        gap: '10px' // Adds gap between columns
-    };
+  // Example data
+  const lists = [
+    { id: 1, title: 'To Do' },
+    { id: 2, title: 'In Progress' },
+    { id: 3, title: 'Done' },
+  ];
 
-    // Sample data for lists (assuming each list needs title and cards data)
-    const boardData = [
-        {
-            title: 'To Do',
-            cards: [
-                { title: 'Lorem ipsum dolor', description: 'Sed viverra, diam eu facilisis bibendum, ante orci placerat quam' },
-                { title: 'Lorem ipsum dolor', description: 'Sed viverra, diam eu facilisis bibendum, ante orci placerat quam' },
-                { title: 'Lorem ipsum dolor', description: 'Sed viverra, diam eu facilisis bibendum, ante orci placerat quam' }
-            ]
-        },
-        {
-            title: 'To Do',
-            cards: [
-                { title: 'Lorem ipsum dolor', description: 'Sed viverra, diam eu facilisis bibendum, ante orci placerat quam' },
-                { title: 'Lorem ipsum dolor', description: 'Sed viverra, diam eu facilisis bibendum, ante orci placerat quam' },
-                { title: 'Lorem ipsum dolor', description: 'Sed viverra, diam eu facilisis bibendum, ante orci placerat quam' }
-            ]
-        },
-        {
-            title: 'To Do',
-            cards: [
-                { title: 'Lorem ipsum dolor', description: 'Sed viverra, diam eu facilisis bibendum, ante orci placerat quam' },
-                { title: 'Lorem ipsum dolor', description: 'Sed viverra, diam eu facilisis bibendum, ante orci placerat quam' },
-                { title: 'Lorem ipsum dolor', description: 'Sed viverra, diam eu facilisis bibendum, ante orci placerat quam' }
-            ]
-        }
-    ];
-
-    return (
-        <div style={boardStyle}>
-            {boardData.map((list, index) => (
-                <List key={index} title={list.title} cards={list.cards} />
-            ))}
-        </div>
-    );
+  return (
+    <div className="m-auto h-screen w-screen overflow-x-scroll text-center">
+      <div className="flex h-full space-x-4">
+        {lists.map(list => (
+          <List key={list.id} title={list.title} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Board;
