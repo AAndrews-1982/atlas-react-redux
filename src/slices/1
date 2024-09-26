@@ -11,7 +11,8 @@ interface CardsState {
 [key: string]: Card;
 }
 
-const initialState: CardsState = {};
+const initialState: CardsState = {},
+;
 
 const cardsSlice = createSlice({
   name: 'cards',
@@ -25,14 +26,14 @@ const cardsSlice = createSlice({
         description,
         listId,
       };
-      state[newCard.id] = newCard;
+      state.cards[newCard.id] = newCard;
     },
     deleteCard: (state, action: PayloadAction<{ cardId: string }>) => {
       const { cardId } = action.payload;
-      delete state[cardId];
+      delete state.cards[cardId];
     },
     clearCards: (state) => {
-      return {};
+      state.cards = {};
     },
   },
 });

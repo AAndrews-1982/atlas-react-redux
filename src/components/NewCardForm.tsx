@@ -27,15 +27,15 @@ const NewCardForm: React.FC<NewCardFormProps> = ({ listId }) => {
         placeholder="Card Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="w-full p-2 mb-2 border rounded"
+        className="w-full p-2 mb-2 border rounded text-black"
       />
       <textarea
         placeholder="Card Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        className="w-full p-2 mb-2 border rounded"
+        className="w-full p-2 mb-2 border rounded text-black"
       />
-      <button type="submit" className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+      <button type="submit" className="w-full p-2 bg-blue-500 text-black rounded hover:bg-blue-600">
         Add Card
       </button>
     </form>
